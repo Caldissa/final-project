@@ -1,0 +1,36 @@
+{
+  "name": "final-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.57.3",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.139",
+    "@julr/unocss-preset-forms": "^0.0.5",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@unocss/preset-icons": "^0.57.3",
+    "@unocss/preset-typography": "^0.57.3",
+    "@unocss/preset-uno": "^0.57.3",
+    "@unocss/transformer-directives": "^0.57.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-vue": "^9.18.1",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-recommended": "^13.0.0",
+    "typescript": "^5.2.2",
+    "unocss": "^0.57.3",
+    "vite": "^4.4.5",
+    "vue-tsc": "^1.8.5"
+  }
+}
