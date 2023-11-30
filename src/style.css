@@ -1,7 +1,20 @@
+:root {
+    --primary: 160 43 34;
+    --primary-light: 186 50 39;
+    --primary-dark: 144 38 30;
+    --secondary: 0 152 219;
+    --secondary-light: 0 172 248;
+    --secondary-lightest: 211 241 255;
+    --secondary-dark: 0 136 197;
+    --accent: 255 138 1;
+    --accent-light: 255 173 77;
+}
+
+
 html {
     font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
-    @apply bg-gray-700 text-white;
+    @apply dark:bg-black/80;
 }

@@ -1,7 +1,12 @@
 <template>
-  <div
-    class="container mx-auto max-w-prose p-2 min-h-screen flex items-center justify-center"
-  >
-    <h1 class="text-5xl tracking-widest">FINAL PROJECT</h1>
-  </div>
+    <div class="min-h-screen grid grid-rows-[minmax(0,1fr)_auto] w-full">
+        <Header />
+        <div class="h-full">Hi</div>
+        <Footer />
+    </div>
 </template>
+
+<script setup lang="ts">
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+</script>
