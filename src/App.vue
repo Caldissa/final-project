@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen grid grid-rows-[minmax(0,1fr)_auto] w-full">
         <Header />
-        <div class="h-full">Hi</div>
+        <RouterView />
         <Footer />
     </div>
 </template>
