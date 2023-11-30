@@ -11,10 +11,15 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.57.3",
+<<<<<<< HEAD
     "firebase": "^10.7.0",
     "firebase-admin": "^11.11.1",
     "firebase-tools": "^12.9.1",
     "vue": "^3.3.4"
+=======
+    "vue": "^3.3.4",
+    "vue-router": "4"
+>>>>>>> 26b046aff3fcab817f22b78b37143b547e2117f1
   },
   "devDependencies": {
     "@iconify/json": "^2.2.139",
