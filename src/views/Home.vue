@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-// import { createPost } from 'firebase'
+import { createUser } from '../firebase.js'
 import Post from '../components/Post.vue'
 import Menu from '../components/MainMenu.vue'
 
@@ -26,7 +26,7 @@ const create = async () => {
         id: 'test-post',
         content: 'hello Isaac'
     }
-    await createPost(post)
+    await createUser(post)
 }
 import Activity from '../components/Activity.vue'
 </script>
