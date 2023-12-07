@@ -8,7 +8,7 @@
                 class="text-white w-full mx-auto max-w-prose h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6"
             >
                 <div class="flex flex-row w-full justify-between py-5">
-                    <p1>{username}</p1>
+                    <p>{username}</p>
                     <button
                         class="bg-white/15 text-white rounded-full px-3 py-1"
                     >
