@@ -25,7 +25,7 @@ import Activity from '../components/Activity.vue'
 // the relevant methods
 import { collection, addDoc } from 'firebase/firestore'
 // the firestore instance
-import db from '../firebase/init.js'
+import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 
 const create = async () => {
