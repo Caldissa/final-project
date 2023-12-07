@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-grey-500 border-white text-white h-full w-52 p-4 md:p-6 flex flex-col gap-4 md:gap-6"
+        class="bg-white/15 border-l-2 border-white/50 text-white h-full w-52 p-4 md:p-6 flex flex-col gap-4 md:gap-6"
     >
         <div>
             <p1>Recently Active</p1>
