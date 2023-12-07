@@ -1,6 +1,6 @@
-import firebase from 'firebase'
 import { initializeApp } from 'firebase/app'
-import { ref, onUnmounted } from 'vue'
+import { onAuthStateChanged, getAuth } from 'firebase/auth'
+import { ref, onUnmounted, computed } from 'vue'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCi2hx96aOWzXh7pwzDPkH5aHRS7nVIRLU',
@@ -75,3 +75,28 @@ export const useLoadPosts = () => {
     onUnmounted(close)
     return posts
 }
+
+export const useAuthState = () => {
+    const user = ref(null)
+    const error = ref(null)
+
+    const auth = getAuth()
+    let unsubscribe
+    onUnmounted(() => {
+        unsubscribe = onAuthStateChanged(
+            auth,
+            (u) => (user.value = u),
+            (e) => (error.value = e)
+        )
+    })
+    onUnmounted(() => unsubscribe())
+
+    const isAuthenticated = computed(() => user.value != null)
+
+    return { user, error, isAuthenticated }
+}
+
+export const getUserState = () =>
+    new Promise((resolve, reject) =>
+        onAuthStateChanged(getAuth(), resolve, reject)
+    )
