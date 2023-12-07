@@ -1,7 +1,6 @@
 <template>
     <div class="min-h-screen grid grid-rows-[minmax(0,1fr)_auto] w-full">
         <RouterView />
-        <Footer />
     </div>
 </template>
 
