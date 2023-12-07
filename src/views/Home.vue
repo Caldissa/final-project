@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-// import { createPost } from 'firebase'
+// import { createPost } from '../firebase'
 import Post from '../components/Post.vue'
 import Menu from '../components/MainMenu.vue'
 

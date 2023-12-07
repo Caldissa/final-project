@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+import firebase from 'firebase'
 import { onAuthStateChanged, getAuth } from 'firebase/auth'
 import { ref, onUnmounted, computed } from 'vue'
 
@@ -12,9 +12,9 @@ const firebaseConfig = {
     measurementId: 'G-JESQKCJ080'
 }
 
-const firebaseApp = initializeApp(firebaseConfig)
+const firebaseApp = firebase.initializeApp(firebaseConfig)
 
-const db = firebaseApp.firebaseApp.firestore()
+const db = firebaseApp.firestore()
 const usersCollection = db.collection('users')
 const postsCollection = db.collection('posts')
 
