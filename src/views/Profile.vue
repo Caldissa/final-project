@@ -16,7 +16,9 @@
                     </button>
                 </div>
                 <div class="text-right py-5">{user Info}</div>
-                <div class="w-full text-center border-b-2 border-white/15">
+                <div
+                    class="w-full mx-auto text-center border-b-2 border-white/15"
+                >
                     Posts
                 </div>
                 <div class=""></div>
