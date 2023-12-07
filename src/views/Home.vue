@@ -9,6 +9,9 @@
             >
                 <Post /><Post />
             </div>
+            <div>
+                <Activity></Activity>
+            </div>
         </div>
     </div>
 </template>
@@ -16,4 +19,5 @@
 <script setup lang="ts">
 import Post from '../components/Post.vue'
 import Menu from '../components/MainMenu.vue'
+import Activity from '../components/Activity.vue'
 </script>
