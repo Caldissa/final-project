@@ -1,4 +1,3 @@
-import firebase from 'firebase'
 import { initializeApp } from 'firebase/app'
 import { ref, onUnmounted } from 'vue'
 
