@@ -1,5 +1,7 @@
 <template>
-    <div class="h-full w-40 p-4 md:p-6 flex flex-col gap-4 md:gap-6">
+    <div
+        class="h-full w-40 p-4 md:p-6 flex flex-col gap-4 md:gap-6 border-r-2 border-white/50"
+    >
         <RouterLink
             to="/"
             class="bg-white/15 text-white rounded-full px-3 py-1 justify-between"
