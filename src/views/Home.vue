@@ -10,6 +10,9 @@
                 <Post /><Post />
                 <button @click="create">Create</button>
             </div>
+            <div>
+                <Activity></Activity>
+            </div>
         </div>
     </div>
 </template>
@@ -26,4 +29,5 @@ const create = async () => {
     }
     await createPost(post)
 }
+import Activity from '../components/Activity.vue'
 </script>
