@@ -18,3 +18,7 @@ html {
 body {
     @apply dark:bg-black/80;
 }
+
+.title {
+    font-family: 'Lobster', Verdana, Geneva, Tahoma, sans-serif;
+}

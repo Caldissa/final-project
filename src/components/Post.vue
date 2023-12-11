@@ -1,10 +1,10 @@
 <template>
     <div
-        class="w-full flex flex-col border border-white/30 bg-white/10 rounded-lg p-4"
+        class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
     >
-        <h2 class="text-white text-xl">POST TITLE</h2>
+        <h2 class="text-xl">POST TITLE</h2>
         <hr class="border border-white my-2" />
-        <p class="text-white">
+        <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

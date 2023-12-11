@@ -42,7 +42,8 @@ export default defineConfig({
         presetWebFonts({
             provider: 'google',
             fonts: {
-                sans: 'Open Sans:100,200,300,400,500,600,700'
+                sans: 'Open Sans:100,200,300,400,500,600,700',
+                lobster: 'Lobster:400'
             }
         })
     ],
