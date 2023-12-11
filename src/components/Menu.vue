@@ -18,6 +18,7 @@
         </RouterLink>
         <a
             href="https://www.prepsportswear.com/college/us/texas/keene/southwestern-adventist-university-knights?schoolid=2062798"
+            target="_blank"
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1"
         >
             <button class="text-left justify-between">
