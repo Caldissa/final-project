@@ -12,7 +12,7 @@
                 <div
                     class="hidden md:flex w-full text-primary dark:text-white justify-center items-end border-b-4 border-black dark:border-primary pb-4 gap-1"
                 >
-                    <h1 class="text-6xl tracking-widest title">SWAU·Says</h1>
+                    <h1 class="text-6xl title tracking-tight">SWAU·Says</h1>
                     <div class="mb-4">
                         <i
                             class="i-simple-line-icons:bubble h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
@@ -34,12 +34,21 @@
 import Post from '../components/Post.vue'
 import Menu from '../components/Menu.vue'
 import Activity from '../components/Activity.vue'
+import { Post as PostType } from '../models'
+import { ref } from 'vue'
 
 // the relevant methods
 import { collection, addDoc } from 'firebase/firestore'
 // the firestore instance
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
+
+const post = ref<PostType>({
+    content: '',
+    media: '',
+    userId: '',
+    timestamp: ''
+})
 
 const create = async () => {
     const colRef = collection(db, 'posts')
