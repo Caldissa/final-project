@@ -27,10 +27,17 @@
         </a>
         <button
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between"
+            @click="open = true"
         >
             <i class="i-mdi:plus w-6 h-6"></i>
             Post
         </button>
+        <Teleport to="body">
+            <div v-if="open" class="modal">
+                <p>Hello from the modal!</p>
+                <button @click="open = false">Close</button>
+            </div>
+        </Teleport>
         <button
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between"
         >
@@ -39,3 +46,21 @@
         </button>
     </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const open = ref(false)
+</script>
+
+<style scoped>
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(54, 54, 54);
+}
+</style>

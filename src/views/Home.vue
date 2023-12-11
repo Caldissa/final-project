@@ -19,6 +19,7 @@
                         ></i>
                     </div>
                 </div>
+                <body></body>
                 <Post /><Post />
                 <button @click="create">Create User</button>
             </div>
