@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden lg:flex">
+                <div class="hidden lg:flex h-full overflow-y-hidden">
                     <Activity />
                 </div>
             </div>

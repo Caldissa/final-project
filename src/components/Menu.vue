@@ -26,7 +26,7 @@
             <i class="i-mdi:logout w-6 h-6"></i>
             <p>Logout</p>
         </button>
-        <button class="text-black" @click="modeToggle">
+        <button class="text-black mt-auto" @click="modeToggle">
             <i class="i-line-md:light-dark-loop w-6 h-6"></i>
         </button>
         <Teleport to="body">
