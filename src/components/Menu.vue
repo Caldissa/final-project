@@ -73,6 +73,7 @@
         </Teleport>
         <button
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left justify-between"
+            @click="logout()"
         >
             <i class="i-mdi:logout w-6 h-6"></i>
             Logout
@@ -117,6 +118,11 @@ const create = async () => {
     // console.log('Document was created with ID:', docRef.id)
 
     router.go(0)
+}
+
+const logout = async () => {
+    sessionStorage.clear()
+    router.push('/login')
 }
 </script>
 
