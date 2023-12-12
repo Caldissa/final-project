@@ -14,11 +14,13 @@
 </template>
 <script setup lang="ts">
 import User from '../components/RecentlyActive.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { collection, query, getDocs, orderBy, limit } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import { User as UserType } from '../models'
 const users = ref<UserType[]>([])
+
+const intervalID = ref(0)
 
 const get = async () => {
     const q = query(
@@ -29,6 +31,7 @@ const get = async () => {
 
     const querySnapshot = await getDocs(q)
 
+    users.value = []
     querySnapshot.forEach((doc) => {
         users.value.push(doc.data() as UserType)
     })
@@ -36,5 +39,10 @@ const get = async () => {
 
 onMounted(() => {
     get()
+    intervalID.value = setInterval(() => get(), 10000)
+})
+
+onUnmounted(() => {
+    clearInterval(intervalID.value)
 })
 </script>
