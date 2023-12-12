@@ -1,6 +1,6 @@
 <!-- remove get post; clean up formatting on posts; make sure mobile is good -->
 <template>
-    <div>
+    <div class="grid gap-4">
         <Post v-for="post in posts" :key="post.timestamp" :post="post" />
     </div>
 </template>
