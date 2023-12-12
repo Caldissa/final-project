@@ -2,7 +2,6 @@
 <template>
     <div class="grid gap-4">
         <Post v-for="post in posts" :key="post.timestamp" :post="post" />
-        <Post v-for="post in posts" :key="post.timestamp" :post="post" />
     </div>
 </template>
 

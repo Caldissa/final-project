@@ -1,9 +1,8 @@
-<!-- need to connect create button to method and test; also make sure mobile is good -->
+<!-- make sure mobile is good -->
 <template>
     <div
         class="w-full h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6 md:border-r-2 bg-primary dark:bg-white/15 border-black/50 dark:border-white/50 text-primary dark:text-white"
     >
-        <!-- reformat buttons -->
         <RouterLink
             to="/"
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 justify-between"
@@ -39,11 +38,12 @@
             <div v-if="open" class="modal flex">
                 <div class="bg-black w-min m-auto rounded-md">
                     <div class="bg-white/30 w-min m-auto p-4 rounded-md">
-                        <p class="text-center text-white">Saying</p>
+                        <p class="text-center text-white">Create Post</p>
                         <div class="flex flex-col justify-center p-5">
                             <div class="justify-center flex">
                                 <textarea
                                     id="saying"
+                                    v-model="content"
                                     rows="5"
                                     cols="33"
                                     placeholder="What's on your mind..."
@@ -56,7 +56,7 @@
                         >
                             <button
                                 class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
-                                @click="open = false"
+                                @click="create(), (open = false)"
                             >
                                 Post
                             </button>
@@ -73,6 +73,7 @@
         </Teleport>
         <button
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left justify-between"
+            @click="logout()"
         >
             <i class="i-mdi:logout w-6 h-6"></i>
             Logout
@@ -86,7 +87,9 @@ import { collection, addDoc, query, getDocs, where } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 import { Post as PostType } from '../models'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const open = ref(false)
 const content = ref('')
 const media = ref('')
@@ -104,7 +107,7 @@ const create = async () => {
         content: content.value,
         media: media.value,
         email: sessionStorage.getItem('ss_email') || '',
-        name: obj?.get('firstName') + '' + obj?.get('lastName') || '',
+        name: obj?.get('firstName') + ' ' + obj?.get('lastName') || '',
         profilePic: pfp,
         timestamp: dayjs().format()
     })
@@ -113,6 +116,13 @@ const create = async () => {
     const docRef = await addDoc(colRef, post.value)
 
     console.log('Document was created with ID:', docRef.id)
+
+    router.go(0)
+}
+
+const logout = async () => {
+    sessionStorage.clear()
+    router.push('/login')
 }
 </script>
 

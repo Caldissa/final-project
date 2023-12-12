@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-1 text-left text-xl align-middle"
+        class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-1 px-3 text-left text-xl align-middle"
     >
         <div>{{ user.firstName }} {{ user.lastName }}</div>
         <div class="text-xs text-right align-bottom">
@@ -21,5 +21,4 @@ defineProps<{
     user: User
 }>()
 //add profile picture
-//could add a last online timestamp
 </script>
