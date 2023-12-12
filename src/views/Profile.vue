@@ -6,8 +6,8 @@
             <div>{{ fName }} {{ lName }}</div>
             <!-- <div>{{ email }}</div> -->
         </div>
-        <div class="flex flex-col border border-1 rounded-lg">
-            <div>
+        <div>
+            <div class="flex flex-col border border-1 rounded-lg m-1">
                 <Bio />
             </div>
             <div class="text-right">
