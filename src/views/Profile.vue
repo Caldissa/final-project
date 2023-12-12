@@ -2,7 +2,7 @@
     <div
         class="text-white w-full mx-auto max-w-prose h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6"
     >
-        <div class="flex flex-row w-full justify-between py-5">
+        <div class="flex flex-row w-full justify-between py-5 text-3xl">
             <div>{{ fName }} {{ lName }}</div>
             <!-- <div>{{ email }}</div> -->
         </div>
