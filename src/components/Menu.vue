@@ -3,36 +3,29 @@
     <div
         class="w-full h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6 md:border-r-2 bg-primary dark:bg-white/15 border-black/50 dark:border-white/50 text-primary dark:text-white"
     >
-        <RouterLink
-            to="/"
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 justify-between"
-        >
+        <RouterLink to="/" class="buttons">
             <i class="i-mdi:home w-6 h-6"></i>
-            Home
+            <p>Home</p>
         </RouterLink>
-        <RouterLink
-            to="/profile"
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left"
-        >
+        <RouterLink to="/profile" class="buttons">
             <i class="i-mdi:person w-6 h-6"></i>
-            Profile
+            <p>Profile</p>
         </RouterLink>
         <a
             href="https://www.prepsportswear.com/college/us/texas/keene/southwestern-adventist-university-knights?schoolid=2062798"
             target="_blank"
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3"
+            class="buttons"
         >
-            <button class="text-left justify-between">
-                <i class="i-mdi:cart w-6 h-6"></i>
-                Shop
-            </button>
+            <i class="i-mdi:cart w-6 h-6"></i>
+            <p>Shop</p>
         </a>
-        <button
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left justify-between"
-            @click="open = true"
-        >
+        <button class="buttons" @click="open = true">
             <i class="i-mdi:plus w-6 h-6"></i>
-            Post
+            <p>Post</p>
+        </button>
+        <button class="buttons" @click="logout()">
+            <i class="i-mdi:logout w-6 h-6"></i>
+            <p>Logout</p>
         </button>
         <Teleport to="body">
             <div v-if="open" class="modal flex">
@@ -71,13 +64,6 @@
                 </div>
             </div>
         </Teleport>
-        <button
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left justify-between"
-            @click="logout()"
-        >
-            <i class="i-mdi:logout w-6 h-6"></i>
-            Logout
-        </button>
     </div>
 </template>
 
@@ -127,6 +113,9 @@ const logout = async () => {
 </script>
 
 <style scoped>
+.buttons {
+    @apply flex bg-white dark:bg-primary shadow-lg rounded-full p-3 justify-center text-center items-center gap-2 hover:dark:bg-primary-light text-lg;
+}
 .modal {
     position: fixed;
     z-index: 999;
