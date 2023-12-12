@@ -13,7 +13,7 @@
         <div class="w-full mx-auto text-center border-b-2 border-white/15">
             Posts
         </div>
-        <div class="">
+        <div class="grid gap-4">
             <Post v-for="post in posts" :key="post.timestamp" :post="post" />
         </div>
     </div>
@@ -22,8 +22,9 @@
 import Post from '../components/Post.vue'
 import { Post as PostType } from '../models'
 import { onMounted, ref } from 'vue'
-import { collection, query, getDocs, where, orderBy } from 'firebase/firestore'
+import { collection, query, getDocs, where } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
+import dayjs from 'dayjs'
 
 const posts = ref<PostType[]>([])
 
@@ -49,14 +50,25 @@ const getUser = async () => {
 const getPosts = async () => {
     const q = query(
         collection(db, 'posts'),
-        where('email', '==', sessionStorage.getItem('ss_email')),
-        orderBy('timestamp', 'desc')
+        where('email', '==', sessionStorage.getItem('ss_email'))
     )
 
     const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc) => {
         posts.value.push(doc.data() as PostType)
+    })
+
+    posts.value.sort((postA, postB) => {
+        const timeA = dayjs(postA.timestamp)
+        const timeB = dayjs(postB.timestamp)
+        if (timeA.isBefore(timeB)) {
+            return 1
+        } else if (timeA.isAfter(timeB)) {
+            return -1
+        } else {
+            return 0
+        }
     })
 }
 
