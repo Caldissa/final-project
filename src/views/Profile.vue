@@ -24,7 +24,7 @@
             </div>
         </div>
         <div
-            class="w-full mx-auto text-center text-black dark:text-white border-b-2 border-black/50 dark:border-white/20"
+            class="w-full mx-auto text-center pb-1 text-black dark:text-white border-b-2 border-black/50 dark:border-white/20"
         >
             Your Activity
         </div>
