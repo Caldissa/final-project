@@ -26,7 +26,7 @@ const get = async () => {
     const q = query(
         collection(db, 'users'),
         orderBy('timestamp', 'desc'),
-        limit(10)
+        limit(12)
     )
 
     const querySnapshot = await getDocs(q)
