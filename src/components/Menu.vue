@@ -32,17 +32,19 @@
                 <div class="bg-black w-min m-auto rounded-md">
                     <div class="bg-white/30 w-min m-auto p-4 rounded-md">
                         <p class="text-center text-white">Create Post</p>
-                        <div class="flex flex-col justify-center p-5">
+                        <div class="flex flex-col justify-center text-end p-5">
                             <div class="justify-center flex">
                                 <textarea
                                     id="saying"
                                     v-model="content"
                                     rows="5"
                                     cols="33"
+                                    maxlength="500"
                                     placeholder="What's on your mind..."
                                     class="text-sm m-2 px-2 py-1 rounded-md"
                                 />
                             </div>
+                            <p class="pr-2">{{ content.length }}/500</p>
                         </div>
                         <div
                             class="mx-auto w-full grid grid-cols-2 justify-center"
