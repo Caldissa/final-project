@@ -2,7 +2,7 @@
     <div
         class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
     >
-        <h2 class="text-xl">POST TITLE {{ post.email }}</h2>
+        <h2 class="text-xl">{{ post.name }} says...</h2>
         <hr class="border border-white my-2" />
         <p v-if="post.content">
             {{ post.content }}
@@ -20,4 +20,6 @@ import dayjs from 'dayjs'
 defineProps<{
     post: Post
 }>()
+
+//could add pfp too
 </script>

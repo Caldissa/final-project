@@ -49,8 +49,9 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
-import { collection, query, getDocs, where } from 'firebase/firestore'
+import { collection, query, getDocs, where, addDoc } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
+import { User } from '../models'
 
 const router = useRouter()
 const firstName = ref('')
@@ -61,31 +62,64 @@ const verifyPass = ref('')
 const showSignUp = ref(false)
 
 const login = async () => {
-    const q = query(
-        collection(db, 'users'),
-        where('email', '==', sessionStorage.getItem(email.value))
-    )
+    const q = query(collection(db, 'users'), where('email', '==', email.value))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
-        if (
-            doc.exists() &&
-            querySnapshot.docs.pop()?.get('password') == password.value
-        ) {
+        console.log('for each: ', doc.id, ' => ', doc.data())
+    })
+    const doc = querySnapshot.docs.pop()
+    console.log('uno', doc?.data())
+    if (doc?.exists()) {
+        if (doc?.get('password') == password.value) {
             sessionStorage.setItem('ss_email', email.value)
             sessionStorage.setItem('ss_date', dayjs().format())
             router.push('/')
         } else {
-            //user needs to be yelled at to enter the correct password
+            console.log(
+                '//user needs to be yelled at to enter the correct password'
+            )
         }
-    })
+    } else {
+        console.log('//user yelled at for needing to sign up')
+    }
 }
 
 const signUp = async () => {
     if (showSignUp.value == false) {
         showSignUp.value = true
     } else {
-        //logic
+        if (password.value == verifyPass.value) {
+            const q = query(
+                collection(db, 'users'),
+                where('email', '==', email.value)
+            )
+            const querySnapshot = await getDocs(q)
+            const doc = querySnapshot.docs.pop()
+            if (doc?.exists()) {
+                console.log('//yell at user that acc exists')
+            } else {
+                const user = ref<User>({
+                    email: email.value,
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    password: password.value,
+                    profilePic: '', // need basic pfp
+                    bio: '',
+                    timestamp: dayjs().format()
+                })
+                const colRef = collection(db, 'users')
+
+                const docRef = await addDoc(colRef, user.value)
+
+                console.log('Document was created with ID:', docRef.id)
+
+                sessionStorage.setItem('ss_email', email.value)
+                sessionStorage.setItem('ss_date', dayjs().format())
+                router.push('/')
+            }
+        } else {
+            console.log('//user needs to be yelled at to match passwords')
+        }
     }
 }
-//make sure to verify pass first
 </script>
