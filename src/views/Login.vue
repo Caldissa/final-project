@@ -64,11 +64,7 @@ const showSignUp = ref(false)
 const login = async () => {
     const q = query(collection(db, 'users'), where('email', '==', email.value))
     const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-        console.log('for each: ', doc.id, ' => ', doc.data())
-    })
     const doc = querySnapshot.docs.pop()
-    console.log('uno', doc?.data())
     if (doc?.exists()) {
         if (doc?.get('password') == password.value) {
             sessionStorage.setItem('ss_email', email.value)
