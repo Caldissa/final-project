@@ -110,7 +110,6 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import { User } from '../models'
-import Title from '../components/Title.vue'
 import slideDown from '../composables/slideDown'
 import slideUp from '../composables/slideUp'
 
