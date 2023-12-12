@@ -1,4 +1,3 @@
-
 <template>
     <div class="absolute z-100 left-0 top-0 h-screen w-screen bg-white">
         <div
@@ -139,8 +138,6 @@ const toggleButtons = () => {
             slideDown(nameDiv.value, 'grid', 500)
             slideDown(passVerify.value, 'grid', 500)
         }
-    } else {
-        console.log('could not find buttons')
     }
 }
 
@@ -154,6 +151,9 @@ const keyUpHandler = async () => {
 }
 
 const login = async () => {
+    if (!email.value || !password.value) {
+        alert('required fields missing')
+    }
     const q = query(collection(db, 'users'), where('email', '==', email.value))
     const querySnapshot = await getDocs(q)
     const userDoc = querySnapshot.docs.pop()
@@ -169,11 +169,23 @@ const login = async () => {
             emit('reload')
             router.push('/')
         } else {
+            alert('incorrect password')
         }
+    } else {
+        alert('no account with email')
     }
 }
 
 const signUp = async () => {
+    if (
+        !firstName.value ||
+        !lastName.value ||
+        !email.value ||
+        !password.value ||
+        !passVerify.value
+    ) {
+        alert('required fields missing')
+    }
     if (password.value == verifyPass.value) {
         const q = query(
             collection(db, 'users'),
@@ -182,14 +194,14 @@ const signUp = async () => {
         const querySnapshot = await getDocs(q)
         const userDoc = querySnapshot.docs.pop()
         if (userDoc?.exists()) {
-            console.log('//yell at user that acc exists')
+            alert('email already in use')
         } else {
             const user = ref<User>({
                 email: email.value,
                 firstName: firstName.value,
                 lastName: lastName.value,
                 password: password.value,
-                profilePic: '', // need basic pfp
+                profilePic: '',
                 bio: 'Tell people about yourself...',
                 timestamp: dayjs().format()
             })
@@ -204,7 +216,7 @@ const signUp = async () => {
             router.push('/')
         }
     } else {
-        console.log('//user needs to be yelled at to match passwords')
+        alert('passwords do not match')
     }
 }
 </script>
