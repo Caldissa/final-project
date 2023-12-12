@@ -5,7 +5,7 @@
         <div class="hidden md:flex">
             <Menu />
         </div>
-        <div class="w-full flex mx-auto">
+        <div class="w-full flex mx-auto overflow-y-scroll">
             <div
                 class="w-full mx-auto max-w-prose h-full p-4 md:px-6 md:py-2 xl:py-4 flex flex-col gap-4 md:gap-6"
             >
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <body></body>
-                <Post /><Post />
+                <Post /><Post /> <Post /><Post /> <Post /><Post />
                 <button @click="create">Create Post</button>
                 <button @click="get">Get Post</button>
             </div>

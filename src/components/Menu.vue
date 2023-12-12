@@ -2,6 +2,7 @@
     <div
         class="w-full h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6 border-r-2 bg-primary dark:bg-white/15 border-black/50 dark:border-white/50 text-primary dark:text-white"
     >
+        <!-- reformat buttons -->
         <RouterLink
             to="/"
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 justify-between"
@@ -34,24 +35,38 @@
             Post
         </button>
         <Teleport to="body">
-            <div v-if="open" class="modal w-full justify justify-center">
-                <p class="text-center text-white">Saying</p>
-                <div class="w-full flex flex-col justify-center p-5">
-                    <div class="justify-center flex"><input /></div>
-                </div>
-                <div class="w-full justify-center flex">
-                    <button
-                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 mx-2 text-left justify-between text-primary dark:text-white"
-                        @click="open = false"
-                    >
-                        Close
-                    </button>
-                    <button
-                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 mx-2 text-left justify-between text-primary dark:text-white"
-                        @click="open = false"
-                    >
-                        Post
-                    </button>
+            <div v-if="open" class="modal flex">
+                <div class="bg-black w-min m-auto rounded-md">
+                    <div class="bg-white/30 w-min m-auto p-4 rounded-md">
+                        <p class="text-center text-white">Saying</p>
+                        <div class="flex flex-col justify-center p-5">
+                            <div class="justify-center flex">
+                                <textarea
+                                    id="saying"
+                                    rows="5"
+                                    cols="33"
+                                    placeholder="What's on your mind..."
+                                    class="text-sm m-2 px-2 py-1 rounded-md"
+                                />
+                            </div>
+                        </div>
+                        <div
+                            class="mx-auto w-full grid grid-cols-2 justify-center"
+                        >
+                            <button
+                                class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
+                                @click="open = false"
+                            >
+                                Post
+                            </button>
+                            <button
+                                class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
+                                @click="open = false"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Teleport>
@@ -101,6 +116,6 @@ const create = async () => {
     left: 0%;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(54, 54, 54);
+    background-color: rgba(50, 50, 50, 0.7);
 }
 </style>
