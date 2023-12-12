@@ -2,16 +2,23 @@
     <div
         class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
     >
-        <h2 class="text-xl">POST TITLE</h2>
+        <h2 class="text-xl">
+            POST TITLE
+            {{ dayjs(post.timestamp).format('YYYY-MM-DD hh:mm:ss A') }}
+        </h2>
         <hr class="border border-white my-2" />
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+        <p v-if="post.content">
+            {{ post.content }}
         </p>
     </div>
 </template>
+
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import { Post } from '../models'
+import dayjs from 'dayjs'
+
+defineProps<{
+    post: Post
+}>()
+</script>
