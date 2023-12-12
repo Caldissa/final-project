@@ -4,10 +4,10 @@
     >
         <div>{{ user.firstName }} {{ user.lastName }}</div>
         <div class="text-xs text-right align-bottom">
-            <p v-if="now === dayjs(user.timestamp).format('YYYY-MM-DD')">
-                {{ dayjs(user.timestamp).format('hh:mm:ss A') }}
+            <p v-if="now === dayjs(user.timestamp).format('MM-DD-YYYY')">
+                {{ dayjs(user.timestamp).format('hh:mm A') }}
             </p>
-            <p v-else>{{ dayjs(user.timestamp).format('YYYY-MM-DD') }}</p>
+            <p v-else>{{ dayjs(user.timestamp).format('MM-DD-YYYY') }}</p>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { User } from '../models'
 import dayjs from 'dayjs'
-const now = dayjs().format('YYYY-MM-DD')
+const now = dayjs().format('MM-DD-YYYY')
 
 defineProps<{
     user: User

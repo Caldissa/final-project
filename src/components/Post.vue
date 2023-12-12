@@ -4,12 +4,15 @@
         class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
     >
         <h2 class="text-xl">{{ post.name }} says...</h2>
-        <hr class="border border-white my-2" />
-        <p v-if="post.content">
+        <div class="p-2"></div>
+        <p v-if="post.content" class="border border-1 p-3">
             {{ post.content }}
         </p>
-        <div class="text-xs py-2">
-            {{ dayjs(post.timestamp).format('YYYY-MM-DD hh:mm:ss A') }}
+        <div class="text-xs py-2 text-right">
+            <p v-if="now === dayjs(post.timestamp).format('MM-DD-YYYY')">
+                {{ dayjs(post.timestamp).format('hh:mm A') }}
+            </p>
+            <p v-else>{{ dayjs(post.timestamp).format('MM-DD-YYYY') }}</p>
         </div>
     </div>
 </template>
@@ -17,6 +20,7 @@
 <script setup lang="ts">
 import { Post } from '../models'
 import dayjs from 'dayjs'
+const now = dayjs().format('MM-DD-YYYY')
 
 defineProps<{
     post: Post
