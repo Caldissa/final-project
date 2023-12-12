@@ -78,7 +78,15 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
-import { collection, query, getDocs, where, addDoc } from 'firebase/firestore'
+import {
+    collection,
+    query,
+    getDocs,
+    where,
+    addDoc,
+    setDoc,
+    doc
+} from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import { User } from '../models'
 import Title from '../components/Title.vue'
@@ -117,9 +125,14 @@ const toggleButtons = () => {
 const login = async () => {
     const q = query(collection(db, 'users'), where('email', '==', email.value))
     const querySnapshot = await getDocs(q)
-    const doc = querySnapshot.docs.pop()
-    if (doc?.exists()) {
-        if (doc?.get('password') == password.value) {
+    const userDoc = querySnapshot.docs.pop()
+    if (userDoc?.exists()) {
+        if (userDoc?.get('password') == password.value) {
+            setDoc(
+                doc(db, 'users', userDoc.id),
+                { timestamp: dayjs().format() },
+                { merge: true }
+            )
             sessionStorage.setItem('ss_email', email.value)
             sessionStorage.setItem('ss_date', dayjs().format())
             router.push('/')
@@ -140,8 +153,8 @@ const signUp = async () => {
             where('email', '==', email.value)
         )
         const querySnapshot = await getDocs(q)
-        const doc = querySnapshot.docs.pop()
-        if (doc?.exists()) {
+        const userDoc = querySnapshot.docs.pop()
+        if (userDoc?.exists()) {
             console.log('//yell at user that acc exists')
         } else {
             const user = ref<User>({
