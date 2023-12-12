@@ -124,12 +124,12 @@ const login = async () => {
             sessionStorage.setItem('ss_date', dayjs().format())
             router.push('/')
         } else {
-            console.log(
-                '//user needs to be yelled at to enter the correct password'
-            )
+            // console.log(
+            //     '//user needs to be yelled at to enter the correct password'
+            // )
         }
     } else {
-        console.log('//user yelled at for needing to sign up')
+        // console.log('//user yelled at for needing to sign up')
     }
 }
 

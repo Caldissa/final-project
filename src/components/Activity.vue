@@ -15,22 +15,23 @@
 <script setup lang="ts">
 import User from '../components/RecentlyActive.vue'
 import { onMounted, ref } from 'vue'
-import { collection, query, getDocs, orderBy } from 'firebase/firestore'
+import { collection, query, getDocs, orderBy, limit } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import { User as UserType } from '../models'
 const users = ref<UserType[]>([])
 
 const get = async () => {
-    const q = query(collection(db, 'users'), orderBy('timestamp', 'desc'))
+    const q = query(
+        collection(db, 'users'),
+        orderBy('timestamp', 'desc'),
+        limit(10)
+    )
 
     const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data())
         users.value.push(doc.data() as UserType)
     })
-
-    console.log('users', users.value)
 }
 
 onMounted(() => {

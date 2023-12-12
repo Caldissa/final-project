@@ -20,11 +20,8 @@ const get = async () => {
     const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data())
         posts.value.push(doc.data() as PostType)
     })
-
-    console.log('posts', posts.value)
 }
 
 onMounted(() => {
