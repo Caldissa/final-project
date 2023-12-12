@@ -33,9 +33,9 @@
         </div>
 
         <Teleport to="body">
-            <div v-if="open" class="modal flex">
-                <div class="bg-black w-min m-auto rounded-md">
-                    <div class="bg-white/30 w-min m-auto p-4 rounded-md">
+            <div v-if="open" class="modal flex p-4">
+                <div class="bg-black w-full m-auto rounded-md max-w-sm">
+                    <div class="bg-white/30 m-auto p-4 rounded-md">
                         <p class="text-center text-white">Bio</p>
                         <div class="flex flex-col justify-center p-5">
                             <div class="justify-center flex">
@@ -43,10 +43,9 @@
                                     id="bio"
                                     v-model="content"
                                     rows="5"
-                                    cols="33"
                                     maxlength="150"
                                     placeholder="Tell people about yourself..."
-                                    class="text-sm m-2 px-2 py-1 rounded-md"
+                                    class="text-sm w-full m-2 px-2 py-1 rounded-md"
                                 />
                             </div>
                             <p class="pr-2 text-right text-white">

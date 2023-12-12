@@ -30,9 +30,9 @@
             <i class="i-line-md:light-dark-loop w-6 h-6"></i>
         </button>
         <Teleport to="body">
-            <div v-if="open" class="modal flex">
-                <div class="bg-black w-min m-auto rounded-md">
-                    <div class="bg-white/30 w-min m-auto p-4 rounded-md">
+            <div v-if="open" class="modal flex p-4">
+                <div class="bg-black w-full m-auto rounded-md max-w-sm">
+                    <div class="bg-white/30 w-full m-auto p-4 rounded-md">
                         <p class="text-center text-white">Create Post</p>
                         <div class="flex flex-col justify-center text-end p-5">
                             <div class="justify-center flex">
@@ -40,10 +40,9 @@
                                     id="saying"
                                     v-model="content"
                                     rows="5"
-                                    cols="33"
                                     maxlength="500"
                                     placeholder="What's on your mind..."
-                                    class="text-sm m-2 px-2 py-1 rounded-md"
+                                    class="text-sm w-full m-2 px-2 py-1 rounded-md"
                                 />
                             </div>
                             <p class="pr-2 text-white">
