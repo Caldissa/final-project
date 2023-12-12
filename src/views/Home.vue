@@ -26,7 +26,6 @@
                     :key="post.timestamp"
                     :post="post"
                 />
-                <button @click="get">Get Post</button>
             </div>
         </div>
         <div class="hidden lg:flex">
