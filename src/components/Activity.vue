@@ -8,8 +8,32 @@
             <p>Recently Active</p>
         </div>
         <div class="p-4 md:p-6 flex flex-col gap-4 md:gap-6">
-            <div>Bob</div>
-            <div>Fred</div>
+            <User v-for="user in users" :key="user.timestamp" :user="user" />
         </div>
     </div>
 </template>
+<script setup lang="ts">
+import User from '../components/RecentlyActive.vue'
+import { onMounted, ref } from 'vue'
+import { collection, query, getDocs, orderBy } from 'firebase/firestore'
+import { db } from '../firebase/init.ts'
+import { User as UserType } from '../models'
+const users = ref<UserType[]>([])
+
+const get = async () => {
+    const q = query(collection(db, 'users'), orderBy('timestamp', 'desc'))
+
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, ' => ', doc.data())
+        users.value.push(doc.data() as UserType)
+    })
+
+    console.log('users', users.value)
+}
+
+onMounted(() => {
+    get()
+})
+</script>
