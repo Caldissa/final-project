@@ -44,7 +44,7 @@
                                     class="text-sm m-2 px-2 py-1 rounded-md"
                                 />
                             </div>
-                            <p class="pr-2">{{ content.length }}/500</p>
+                            <p class="pr-2 text-white">{{ content.length }}/500</p>
                         </div>
                         <div
                             class="mx-auto w-full grid grid-cols-2 justify-center"

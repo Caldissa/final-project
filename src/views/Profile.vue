@@ -32,10 +32,14 @@
                                             v-model="content"
                                             rows="5"
                                             cols="33"
+                                            maxlength="150"
                                             placeholder="Tell people about yourself..."
                                             class="text-sm m-2 px-2 py-1 rounded-md"
                                         />
                                     </div>
+                                    <p class="pr-2 text-right text-white">
+                                        {{ content.length }}/150
+                                    </p>
                                 </div>
                                 <div
                                     class="mx-auto w-full grid grid-cols-2 justify-center"
