@@ -2,28 +2,33 @@
     <div
         class="text-white w-full mx-auto max-w-prose h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6"
     >
-        <div class="flex flex-row w-full justify-between py-5 text-3xl">
+        <div
+            class="flex flex-row w-full justify-between py-5 text-3xl text-primary dark:text-white"
+        >
             <div>{{ fName }} {{ lName }}</div>
             <!-- <div>{{ email }}</div> -->
         </div>
         <div class="relative w-full">
-            <div class="flex flex-col text-xl bg-white/10 rounded-lg m-1">
+            <div
+                class="flex flex-col text-xl text-black shadow-md shadow-primary dark:shadow-sm dark:shadow-white dark:text-white dark:bg-white/10 rounded-lg m-1"
+            >
                 <Bio />
             </div>
             <div class="absolute -top-3 -right-3">
                 <button
-                    class="bg-white rounded-full dark:bg-primary p-2 items-center justify-center shadow-lg text-sm"
+                    class="bg-primary rounded-full dark:bg-primary p-2 items-center justify-center shadow-lg text-sm"
                     @click="open = true"
                 >
                     <i class="i-mdi:pencil w-6 h-6 align-middle"></i>
                 </button>
             </div>
         </div>
-        <!-- <div class="text-right py-5">{user Info}</div> -->
-        <div class="w-full mx-auto text-center border-b-2 border-white/15">
-            Posts
+        <div
+            class="w-full mx-auto text-center text-black dark:text-white border-b-2 border-black/50 dark:border-white/20"
+        >
+            Your Activity
         </div>
-        <div class="grid gap-4">
+        <div class="grid gap-4 text-black dark:text-white">
             <Post v-for="post in posts" :key="post.timestamp" :post="post" />
         </div>
 
