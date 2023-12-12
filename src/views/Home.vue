@@ -21,7 +21,8 @@
                 </div>
                 <body></body>
                 <Post /><Post />
-                <button @click="create">Create User</button>
+                <button @click="create">Create Post</button>
+                <button @click="get">Get Post</button>
             </div>
         </div>
         <div class="hidden lg:flex">
@@ -36,29 +37,40 @@ import Menu from '../components/Menu.vue'
 import Activity from '../components/Activity.vue'
 import { Post as PostType } from '../models'
 import { ref } from 'vue'
-import { collection, addDoc } from 'firebase/firestore'
+import {
+    collection,
+    addDoc,
+    query,
+    where,
+    getDocs,
+    orderBy
+} from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 
-const post = ref<PostType>({
-    content: '',
-    media: '',
-    email: '',
-    timestamp: ''
-})
-
 const create = async () => {
     const colRef = collection(db, 'posts')
-    const dataObj = {
-        content: "Hi, Isaac. You're late",
-        user: 'kaylaanderson',
-        dateCreated: dayjs().format()
-    }
+    const post = ref<PostType>({
+        content: '',
+        media: '',
+        email: '',
+        timestamp: dayjs().format()
+    })
 
     // create document and return reference to it
-    const docRef = await addDoc(colRef, dataObj)
+    const docRef = await addDoc(colRef, post.value)
 
     // access auto-generated ID with '.id'
     console.log('Document was created with ID:', docRef.id)
+}
+
+const get = async () => {
+    const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'))
+
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, ' => ', doc.data())
+    })
 }
 </script>
