@@ -20,7 +20,11 @@
                     </div>
                 </div>
                 <body></body>
-                <Post /><Post /> <Post /><Post /> <Post /><Post />
+                <Post
+                    v-for="post in posts"
+                    :key="post.timestamp"
+                    :post="post"
+                />
                 <button @click="get">Get Post</button>
             </div>
         </div>
@@ -34,8 +38,12 @@
 import Post from '../components/Post.vue'
 import Menu from '../components/Menu.vue'
 import Activity from '../components/Activity.vue'
+import { Post as PostType } from '../models'
+import { onMounted, ref } from 'vue'
 import { collection, query, getDocs, orderBy } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
+
+const posts = ref<PostType[]>([])
 
 const get = async () => {
     const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'))
@@ -44,6 +52,13 @@ const get = async () => {
 
     querySnapshot.forEach((doc) => {
         console.log(doc.id, ' => ', doc.data())
+        posts.value.push(doc.data() as PostType)
     })
+
+    console.log('posts', posts.value)
 }
+
+onMounted(() => {
+    get()
+})
 </script>
