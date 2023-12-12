@@ -36,7 +36,10 @@
         <Teleport to="body">
             <div v-if="open" class="modal w-full justify justify-center">
                 <p class="text-center text-white">Hello from the modal!</p>
-                <div class="w-full justify-center">
+                <div class="w-full flex flex-col justify-between">
+                    <div class="justify-center"><input /></div>
+                </div>
+                <div class="w-full justify-center flex">
                     <button
                         class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between text-primary dark:text-white"
                         @click="open = false"
@@ -65,6 +68,13 @@
 import { ref } from 'vue'
 
 const open = ref(false)
+
+const post = ref<PostType>({
+    content: '',
+    media: '',
+    userId: '',
+    timestamp: ''
+})
 </script>
 
 <style scoped>
