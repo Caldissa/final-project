@@ -28,6 +28,9 @@
             Your Activity
         </div>
         <div class="grid gap-4 text-black dark:text-white">
+            <div v-if="posts.length < 1" class="text-center opacity-50">
+                No posts yet. Say something!
+            </div>
             <Post v-for="post in posts" :key="post.timestamp" :post="post" />
         </div>
 
