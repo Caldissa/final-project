@@ -35,19 +35,19 @@
         </button>
         <Teleport to="body">
             <div v-if="open" class="modal w-full justify justify-center">
-                <p class="text-center text-white">Hello from the modal!</p>
-                <div class="w-full flex flex-col justify-between">
-                    <div class="justify-center"><input /></div>
+                <p class="text-center text-white">Saying</p>
+                <div class="w-full flex flex-col justify-center p-5">
+                    <div class="justify-center flex"><input /></div>
                 </div>
                 <div class="w-full justify-center flex">
                     <button
-                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between text-primary dark:text-white"
+                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 mx-2 text-left justify-between text-primary dark:text-white"
                         @click="open = false"
                     >
                         Close
                     </button>
                     <button
-                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between text-primary dark:text-white"
+                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 mx-2 text-left justify-between text-primary dark:text-white"
                         @click="open = false"
                     >
                         Post
