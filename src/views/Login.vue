@@ -1,6 +1,6 @@
 <!-- need to add signup stuff and format; make sure mobile is good -->
 <template>
-    <div class="absolute left-0 top-0 h-screen w-screen bg-white">
+    <div class="absolute z-100 left-0 top-0 h-screen w-screen bg-white">
         <div class="flex bg-black/80 h-full w-full justify-center items-center">
             <div
                 class="shadow-lg w-lg dark:bg-white/10 grid gap-2 border-2 border-white/30 p-4 rounded-md dark:text-white"
