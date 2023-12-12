@@ -1,4 +1,4 @@
-<!-- need to add signup stuff and format; make sure mobile is good -->
+
 <template>
     <div class="absolute z-100 left-0 top-0 h-screen w-screen bg-white">
         <div
@@ -169,12 +169,7 @@ const login = async () => {
             emit('reload')
             router.push('/')
         } else {
-            // console.log(
-            //     '//user needs to be yelled at to enter the correct password'
-            // )
         }
-    } else {
-        // console.log('//user yelled at for needing to sign up')
     }
 }
 

@@ -119,8 +119,6 @@ const create = async () => {
 
     const docRef = await addDoc(colRef, post.value)
 
-    // console.log('Document was created with ID:', docRef.id)
-
     router.go(0)
 }
 

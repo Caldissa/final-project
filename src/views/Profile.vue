@@ -6,7 +6,6 @@
             class="flex flex-row w-full justify-between py-5 text-3xl text-primary dark:text-white"
         >
             <div>{{ fName }} {{ lName }}</div>
-            <!-- <div>{{ email }}</div> -->
         </div>
         <div class="relative w-full">
             <div
@@ -96,7 +95,6 @@ const router = useRouter()
 const content = ref('')
 const posts = ref<PostType[]>([])
 
-// const email = sessionStorage.getItem('ss_email')
 const open = ref(false)
 const fName = ref('')
 const lName = ref('')
@@ -118,8 +116,6 @@ const updateBio = async () => {
             { merge: true }
         )
         router.go(0)
-    } else {
-        // console.log('//user yelled at for needing to sign up')
     }
 }
 
@@ -129,18 +125,12 @@ const getUser = async () => {
         where('email', '==', sessionStorage.getItem('ss_email'))
     )
 
-    // const q = query(
-    //     collection(db, 'users'),
-    //     where('email', '==', sessionStorage.getItem('ss_email'))
-    // )
-
     const querySnapshot = await getDocs(q)
 
     const doc = querySnapshot.docs.pop()
     fName.value = doc?.get('firstName')
     lName.value = doc?.get('lastName')
     email.value = doc?.get('email')
-    // docID.value = doc?.get()
 }
 
 const getPosts = async () => {
