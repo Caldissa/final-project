@@ -5,8 +5,8 @@ import dayjs from 'dayjs'
 const routes = [
     { path: '/', component: Home },
     { path: '/profile', component: () => import('../views/Profile.vue') },
-    { path: '/login', component: () => import('../views/Login.vue') },
-    { path: '/photo', component: () => import('../views/Photo.vue') }
+    { path: '/login', component: () => import('../views/Login.vue') }
+    // { path: '/photo', component: () => import('../views/Photo.vue') }
 
     // { path: '/shop', component: () => import('../views/Shop.vue') },
 ]
