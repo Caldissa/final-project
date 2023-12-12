@@ -5,14 +5,14 @@
         <!-- reformat buttons -->
         <RouterLink
             to="/"
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 justify-between"
+            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 justify-between"
         >
             <i class="i-mdi:home w-6 h-6"></i>
             Home
         </RouterLink>
         <RouterLink
             to="/profile"
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left"
+            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left"
         >
             <i class="i-mdi:person w-6 h-6"></i>
             Profile
@@ -20,7 +20,7 @@
         <a
             href="https://www.prepsportswear.com/college/us/texas/keene/southwestern-adventist-university-knights?schoolid=2062798"
             target="_blank"
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1"
+            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3"
         >
             <button class="text-left justify-between">
                 <i class="i-mdi:cart w-6 h-6"></i>
@@ -28,7 +28,7 @@
             </button>
         </a>
         <button
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between"
+            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left justify-between"
             @click="open = true"
         >
             <i class="i-mdi:plus w-6 h-6"></i>
@@ -71,7 +71,7 @@
             </div>
         </Teleport>
         <button
-            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between"
+            class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-3 text-left justify-between"
         >
             <i class="i-mdi:logout w-6 h-6"></i>
             Logout
