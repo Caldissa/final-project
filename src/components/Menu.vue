@@ -44,7 +44,9 @@
                                     class="text-sm m-2 px-2 py-1 rounded-md"
                                 />
                             </div>
-                            <p class="pr-2 text-white">{{ content.length }}/500</p>
+                            <p class="pr-2 text-white">
+                                {{ content.length }}/500
+                            </p>
                         </div>
                         <div
                             class="mx-auto w-full grid grid-cols-2 justify-center"
@@ -71,7 +73,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { collection, addDoc, query, getDocs, where } from 'firebase/firestore'
+import {
+    collection,
+    addDoc,
+    query,
+    getDocs,
+    where,
+    setDoc,
+    doc
+} from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 import { Post as PostType } from '../models'
@@ -109,6 +119,19 @@ const create = async () => {
 }
 
 const logout = async () => {
+    const q = query(
+        collection(db, 'users'),
+        where('email', '==', sessionStorage.getItem('ss_email'))
+    )
+    const querySnapshot = await getDocs(q)
+    const userDoc = querySnapshot.docs.pop()
+    if (userDoc?.exists) {
+        setDoc(
+            doc(db, 'users', userDoc.id),
+            { timestamp: dayjs().format() },
+            { merge: true }
+        )
+    }
     sessionStorage.clear()
     router.push('/login')
 }
