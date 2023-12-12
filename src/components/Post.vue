@@ -5,7 +5,7 @@
     >
         <h2 class="text-xl">{{ post.name }} says...</h2>
         <div class="p-2"></div>
-        <p v-if="post.content" class="border border-1 p-3">
+        <p v-if="post.content" class="border border-1 p-3 rounded-md">
             {{ post.content }}
         </p>
         <div class="text-xs py-2 text-right">
