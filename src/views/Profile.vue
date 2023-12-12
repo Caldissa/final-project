@@ -84,7 +84,6 @@ import {
     query,
     getDocs,
     where,
-    addDoc,
     setDoc,
     doc
 } from 'firebase/firestore'
@@ -102,6 +101,7 @@ const lName = ref('')
 const email = ref('')
 
 const updateBio = async () => {
+    console.log('called update bio')
     const q = query(
         collection(db, 'users'),
         where('email', '==', sessionStorage.getItem('ss_email'))
@@ -109,12 +109,13 @@ const updateBio = async () => {
     const querySnapshot = await getDocs(q)
     const userDoc = querySnapshot.docs.pop()
     if (userDoc?.exists()) {
+        console.log('userdoc', userDoc)
         setDoc(
             doc(db, 'users', userDoc.id),
             { bio: content.value },
             { merge: true }
         )
-        router.go(0)
+        setTimeout(() => router.go(0), 300)
     } else {
         // console.log('//user yelled at for needing to sign up')
     }
