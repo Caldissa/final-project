@@ -1,3 +1,4 @@
+<!-- need to connect create button to method and test -->
 <template>
     <div
         class="w-full h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6 border-r-2 bg-primary dark:bg-white/15 border-black/50 dark:border-white/50 text-primary dark:text-white"
@@ -81,7 +82,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, query, getDocs, where } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 import { Post as PostType } from '../models'
@@ -90,20 +91,27 @@ const open = ref(false)
 const content = ref('')
 const media = ref('')
 
-const post = ref<PostType>({
-    content: content.value,
-    media: media.value,
-    email: '', //grab from session storage
-    timestamp: dayjs().format()
-})
-
 const create = async () => {
+    const q = query(
+        collection(db, 'users'),
+        where('email', '==', sessionStorage.getItem('ss_email'))
+    )
+    const querySnapshot = await getDocs(q)
+    const obj = querySnapshot.docs.pop()
+    const pfp = obj?.get('profilePic') || '' //default here
+
+    const post = ref<PostType>({
+        content: content.value,
+        media: media.value,
+        email: sessionStorage.getItem('ss_email') || '',
+        name: obj?.get('firstName') + '' + obj?.get('lastName') || '',
+        profilePic: pfp,
+        timestamp: dayjs().format()
+    })
     const colRef = collection(db, 'posts')
 
-    // create document and return reference to it
-    const docRef = await addDoc(colRef, post)
+    const docRef = await addDoc(colRef, post.value)
 
-    // access auto-generated ID with '.id'
     console.log('Document was created with ID:', docRef.id)
 }
 </script>

@@ -1,3 +1,4 @@
+<!-- need to add signup stuff and format -->
 <template>
     <div class="grid gap-4">
         <div
@@ -26,7 +27,7 @@ import { useRouter } from 'vue-router'
 import dayjs from 'dayjs'
 
 const router = useRouter()
-const email = ref('ka')
+const email = ref('')
 const password = ref('')
 
 const login = async () => {

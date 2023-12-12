@@ -21,7 +21,6 @@
                 </div>
                 <body></body>
                 <Post /><Post /> <Post /><Post /> <Post /><Post />
-                <button @click="create">Create Post</button>
                 <button @click="get">Get Post</button>
             </div>
         </div>
@@ -35,34 +34,8 @@
 import Post from '../components/Post.vue'
 import Menu from '../components/Menu.vue'
 import Activity from '../components/Activity.vue'
-import { Post as PostType } from '../models'
-import { ref } from 'vue'
-import {
-    collection,
-    addDoc,
-    query,
-    where,
-    getDocs,
-    orderBy
-} from 'firebase/firestore'
+import { collection, query, getDocs, orderBy } from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
-import dayjs from 'dayjs'
-
-const create = async () => {
-    const colRef = collection(db, 'posts')
-    const post = ref<PostType>({
-        content: '',
-        media: '',
-        email: '',
-        timestamp: dayjs().format()
-    })
-
-    // create document and return reference to it
-    const docRef = await addDoc(colRef, post.value)
-
-    // access auto-generated ID with '.id'
-    console.log('Document was created with ID:', docRef.id)
-}
 
 const get = async () => {
     const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'))
