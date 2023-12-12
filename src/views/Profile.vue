@@ -110,12 +110,12 @@ const updateBio = async () => {
     const userDoc = querySnapshot.docs.pop()
     if (userDoc?.exists()) {
         console.log('userdoc', userDoc)
-        setDoc(
+        await setDoc(
             doc(db, 'users', userDoc.id),
             { bio: content.value },
             { merge: true }
         )
-        setTimeout(() => router.go(0), 300)
+        router.go(0)
     } else {
         // console.log('//user yelled at for needing to sign up')
     }
