@@ -7,7 +7,7 @@
         <p v-if="post.content">
             {{ post.content }}
         </p>
-        <div class="text-xs border-t-1">
+        <div class="text-xs py-2">
             {{ dayjs(post.timestamp).format('YYYY-MM-DD hh:mm:ss A') }}
         </div>
     </div>
