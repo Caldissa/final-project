@@ -27,7 +27,7 @@
     <div
         v-if="open"
         id="bg-shade"
-        class="absolute top-0 z-50 w-full right-0 h-100vh bg-black/70 w-full h-full"
+        class="absolute md:hidden top-0 z-50 w-full right-0 h-100vh bg-black/70 w-full h-full"
     ></div>
 </template>
 <script setup lang="ts">
