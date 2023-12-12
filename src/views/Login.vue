@@ -4,6 +4,7 @@
         <div class="flex bg-black/80 h-full w-full justify-center items-center">
             <div
                 class="shadow-lg w-lg dark:bg-white/10 grid gap-2 border-2 border-white/30 p-4 rounded-md dark:text-white"
+                @keyup.enter="keyUpHandler"
             >
                 <Title />
                 <div ref="nameDiv" class="hidden text-black grid-cols-2 gap-2">
@@ -23,12 +24,14 @@
                     type="text"
                     placeholder="Email"
                     class="text-black"
+                    required
                 />
                 <input
                     v-model="password"
                     type="password"
                     placeholder="Password"
                     class="text-black"
+                    required
                 />
                 <div ref="passVerify" class="hidden text-black">
                     <input
@@ -121,6 +124,15 @@ const toggleButtons = () => {
         }
     } else {
         console.log('could not find buttons')
+    }
+}
+
+const keyUpHandler = async () => {
+    console.log('in method')
+    if (showSignUp.value) {
+        signUp()
+    } else {
+        login()
     }
 }
 
