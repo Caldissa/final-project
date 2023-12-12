@@ -39,7 +39,7 @@ const get = async () => {
 
 onMounted(() => {
     get()
-    intervalID.value = setInterval(() => get(), 10000)
+    intervalID.value = setInterval(() => get(), 60000)
 })
 
 onUnmounted(() => {
