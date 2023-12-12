@@ -1,5 +1,7 @@
 <template>
-    <div class="min-h-screen grid grid-rows-[minmax(0,1fr)_auto] w-full">
+    <div
+        class="h-screen overflow-y-hidden grid grid-rows-[minmax(0,1fr)_auto] w-full"
+    >
         <Header />
         <div class="h-full w-full pt-22 md:pt-0">
             <RouterView />

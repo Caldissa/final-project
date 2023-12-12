@@ -2,6 +2,7 @@
     <div
         class="w-full h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6 border-r-2 bg-primary dark:bg-white/15 border-black/50 dark:border-white/50 text-primary dark:text-white"
     >
+        <!-- reformat buttons -->
         <RouterLink
             to="/"
             class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 justify-between"
