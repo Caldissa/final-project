@@ -1,7 +1,7 @@
 <!--- could redesign post with text area outline -->
 <template>
     <div
-        class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
+        class="w-full flex flex-col shadow-md shadow-primary dark:shadow-sm dark:shadow-white border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
     >
         <h2 class="text-xl">{{ post.name }} says...</h2>
         <div class="p-2"></div>
