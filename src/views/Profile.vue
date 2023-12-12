@@ -32,7 +32,7 @@
                                             v-model="content"
                                             rows="5"
                                             cols="33"
-                                            placeholder="Bio"
+                                            placeholder="Tell people about yourself..."
                                             class="text-sm m-2 px-2 py-1 rounded-md"
                                         />
                                     </div>
