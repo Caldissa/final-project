@@ -17,11 +17,6 @@ const getUser = async () => {
         where('email', '==', sessionStorage.getItem('ss_email'))
     )
 
-    // const q = query(
-    //     collection(db, 'users'),
-    //     where('email', '==', sessionStorage.getItem('ss_email'))
-    // )
-
     const querySnapshot = await getDocs(q)
 
     const doc = querySnapshot.docs.pop()
