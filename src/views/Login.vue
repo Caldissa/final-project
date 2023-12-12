@@ -6,7 +6,7 @@
                 class="shadow-lg w-lg dark:bg-white/10 grid gap-2 border-2 border-white/30 p-4 rounded-md dark:text-white"
             >
                 <Title />
-                <div ref="nameDiv" class="hidden grid-cols-2 gap-2">
+                <div ref="nameDiv" class="hidden text-black grid-cols-2 gap-2">
                     <input
                         v-model="firstName"
                         type="text"
@@ -18,13 +18,19 @@
                         placeholder="Last Name"
                     />
                 </div>
-                <input v-model="email" type="text" placeholder="Email" />
+                <input
+                    v-model="email"
+                    type="text"
+                    placeholder="Email"
+                    class="text-black"
+                />
                 <input
                     v-model="password"
                     type="password"
                     placeholder="Password"
+                    class="text-black"
                 />
-                <div ref="passVerify" class="hidden">
+                <div ref="passVerify" class="hidden text-black">
                     <input
                         v-model="verifyPass"
                         type="password"
