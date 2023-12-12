@@ -93,6 +93,8 @@ import Title from '../components/Title.vue'
 import slideDown from '../composables/slideDown'
 import slideUp from '../composables/slideUp'
 
+const emit = defineEmits(['reload'])
+
 const router = useRouter()
 const firstName = ref('')
 const lastName = ref('')
@@ -135,6 +137,7 @@ const login = async () => {
             )
             sessionStorage.setItem('ss_email', email.value)
             sessionStorage.setItem('ss_date', dayjs().format())
+            emit('reload')
             router.push('/')
         } else {
             // console.log(
@@ -163,7 +166,7 @@ const signUp = async () => {
                 lastName: lastName.value,
                 password: password.value,
                 profilePic: '', // need basic pfp
-                bio: '',
+                bio: 'Tell people about yourself...',
                 timestamp: dayjs().format()
             })
             const colRef = collection(db, 'users')
