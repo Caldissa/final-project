@@ -14,4 +14,5 @@ export interface User {
     password: string
     profilePic: string
     bio: string
+    timestamp: string
 }
