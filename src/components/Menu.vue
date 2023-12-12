@@ -79,15 +79,31 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { collection, addDoc } from 'firebase/firestore'
+import { db } from '../firebase/init.ts'
+import dayjs from 'dayjs'
+import { Post as PostType } from '../models'
 
 const open = ref(false)
+const content = ref('')
+const media = ref('')
 
 const post = ref<PostType>({
-    content: '',
-    media: '',
-    userId: '',
-    timestamp: ''
+    content: content.value,
+    media: media.value,
+    email: '', //grab from session storage
+    timestamp: dayjs().format()
 })
+
+const create = async () => {
+    const colRef = collection(db, 'posts')
+
+    // create document and return reference to it
+    const docRef = await addDoc(colRef, post)
+
+    // access auto-generated ID with '.id'
+    console.log('Document was created with ID:', docRef.id)
+}
 </script>
 
 <style scoped>
