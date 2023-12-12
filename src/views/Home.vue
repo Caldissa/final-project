@@ -36,17 +36,14 @@ import Menu from '../components/Menu.vue'
 import Activity from '../components/Activity.vue'
 import { Post as PostType } from '../models'
 import { ref } from 'vue'
-
-// the relevant methods
 import { collection, addDoc } from 'firebase/firestore'
-// the firestore instance
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 
 const post = ref<PostType>({
     content: '',
     media: '',
-    userId: '',
+    email: '',
     timestamp: ''
 })
 
