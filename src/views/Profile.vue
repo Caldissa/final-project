@@ -6,64 +6,19 @@
             <div>{{ fName }} {{ lName }}</div>
             <!-- <div>{{ email }}</div> -->
         </div>
-        <div>
-            <div class="flex flex-col border border-1 rounded-lg m-1">
+        <div class="relative w-full">
+            <div class="flex flex-col text-xl bg-white/10 rounded-lg m-1">
                 <Bio />
             </div>
-            <div class="text-right">
+            <div class="absolute -top-3 -right-3">
                 <button
-                    class="bg-white dark:bg-primary shadow-lg rounded-lg p-2 text-left justify-between text-sm"
+                    class="bg-white rounded-full dark:bg-primary p-2 items-center justify-center shadow-lg text-sm"
                     @click="open = true"
                 >
-                    <i class="i-mdi:gear w-4 h-4 align-middle"></i>
-                    Edit Bio
+                    <i class="i-mdi:pencil w-6 h-6 align-middle"></i>
                 </button>
-                <Teleport to="body">
-                    <div v-if="open" class="modal flex">
-                        <div class="bg-black w-min m-auto rounded-md">
-                            <div
-                                class="bg-white/30 w-min m-auto p-4 rounded-md"
-                            >
-                                <p class="text-center text-white">Bio</p>
-                                <div class="flex flex-col justify-center p-5">
-                                    <div class="justify-center flex">
-                                        <textarea
-                                            id="bio"
-                                            v-model="content"
-                                            rows="5"
-                                            cols="33"
-                                            maxlength="150"
-                                            placeholder="Tell people about yourself..."
-                                            class="text-sm m-2 px-2 py-1 rounded-md"
-                                        />
-                                    </div>
-                                    <p class="pr-2 text-right text-white">
-                                        {{ content.length }}/150
-                                    </p>
-                                </div>
-                                <div
-                                    class="mx-auto w-full grid grid-cols-2 justify-center"
-                                >
-                                    <button
-                                        class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
-                                        @click="updateBio(), (open = false)"
-                                    >
-                                        Update
-                                    </button>
-                                    <button
-                                        class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
-                                        @click="open = false"
-                                    >
-                                        Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Teleport>
             </div>
         </div>
-        <body></body>
         <!-- <div class="text-right py-5">{user Info}</div> -->
         <div class="w-full mx-auto text-center border-b-2 border-white/15">
             Posts
@@ -71,6 +26,48 @@
         <div class="grid gap-4">
             <Post v-for="post in posts" :key="post.timestamp" :post="post" />
         </div>
+
+        <Teleport to="body">
+            <div v-if="open" class="modal flex">
+                <div class="bg-black w-min m-auto rounded-md">
+                    <div class="bg-white/30 w-min m-auto p-4 rounded-md">
+                        <p class="text-center text-white">Bio</p>
+                        <div class="flex flex-col justify-center p-5">
+                            <div class="justify-center flex">
+                                <textarea
+                                    id="bio"
+                                    v-model="content"
+                                    rows="5"
+                                    cols="33"
+                                    maxlength="150"
+                                    placeholder="Tell people about yourself..."
+                                    class="text-sm m-2 px-2 py-1 rounded-md"
+                                />
+                            </div>
+                            <p class="pr-2 text-right text-white">
+                                {{ content.length }}/150
+                            </p>
+                        </div>
+                        <div
+                            class="mx-auto w-full grid grid-cols-2 justify-center"
+                        >
+                            <button
+                                class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
+                                @click="updateBio(), (open = false)"
+                            >
+                                Update
+                            </button>
+                            <button
+                                class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
+                                @click="open = false"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Teleport>
     </div>
 </template>
 <script setup lang="ts">
