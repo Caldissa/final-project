@@ -1,58 +1,76 @@
 <!-- need to add signup stuff and format; make sure mobile is good -->
 <template>
     <div class="absolute z-100 left-0 top-0 h-screen w-screen bg-white">
-        <div class="flex bg-black/80 h-full w-full justify-center items-center">
+        <div
+            class="flex dark:bg-black/80 h-full w-full justify-center items-center p-4"
+        >
             <div
-                class="shadow-lg w-lg dark:bg-white/10 grid gap-2 border-2 border-white/30 p-4 rounded-md dark:text-white"
+                class="shadow-lg w-lg bg-primary dark:bg-white/10 grid gap-2 border-2 dark:border-white/30 p-4 rounded-md text-white"
                 @keyup.enter="keyUpHandler"
             >
-                <Title />
-                <div ref="nameDiv" class="hidden text-black grid-cols-2 gap-2">
-                    <input
-                        v-model="firstName"
-                        type="text"
-                        placeholder="First Name"
-                    />
-                    <input
-                        v-model="lastName"
-                        type="text"
-                        placeholder="Last Name"
-                    />
+                <div
+                    class="flex w-full text-white justify-center items-end border-b-4 border-black dark:border-primary pb-4 gap-1"
+                >
+                    <h1 class="text-4xl md:text-6xl title tracking-tight">
+                        SWAU·Says
+                    </h1>
+                    <div class="mb-4">
+                        <i
+                            class="i-simple-line-icons:bubble h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
+                        ></i>
+                    </div>
                 </div>
-                <input
-                    v-model="email"
-                    type="text"
-                    placeholder="Email"
-                    class="text-black"
-                    required
-                />
-                <input
-                    v-model="password"
-                    type="password"
-                    placeholder="Password"
-                    class="text-black"
-                    required
-                />
-                <div ref="passVerify" class="hidden text-black">
+                <div class="grid gap-2 py-4">
+                    <div
+                        ref="nameDiv"
+                        class="hidden text-black grid-cols-2 gap-2"
+                    >
+                        <input
+                            v-model="firstName"
+                            type="text"
+                            placeholder="First Name"
+                        />
+                        <input
+                            v-model="lastName"
+                            type="text"
+                            placeholder="Last Name"
+                        />
+                    </div>
                     <input
-                        v-model="verifyPass"
-                        type="password"
-                        placeholder="Retype Password"
+                        v-model="email"
+                        type="text"
+                        placeholder="Email"
+                        class="text-black"
+                        required
                     />
+                    <input
+                        v-model="password"
+                        type="password"
+                        placeholder="Password"
+                        class="text-black"
+                        required
+                    />
+                    <div ref="passVerify" class="hidden text-black">
+                        <input
+                            v-model="verifyPass"
+                            type="password"
+                            placeholder="Retype Password"
+                        />
+                    </div>
                 </div>
                 <div
                     v-if="!showSignUp"
                     class="w-full grid justify-center text-center"
                 >
                     <button
-                        class="bg-primary rounded-lg hover:bg-primary-light mx-auto py-2 px-4 text-white transition duration-200 ease-in-out"
+                        class="bg-white hover:bg-gray-200 text-primary dark:bg-primary rounded-lg hover:dark:bg-primary-light mx-auto py-2 px-4 dark:text-white transition duration-200 ease-in-out"
                         @click="login"
                     >
                         Log In
                     </button>
                     <p>or</p>
                     <button
-                        class="hover:text-primary-light underline"
+                        class="hover:text-gray-200 dark:hover:text-primary-light underline transition duration-200 ease-in-out"
                         @click="toggleButtons"
                     >
                         Sign Up
@@ -60,14 +78,14 @@
                 </div>
                 <div v-else class="w-full grid justify-center text-center">
                     <button
-                        class="bg-primary rounded-lg hover:bg-primary-light mx-auto py-2 px-4 text-white transition duration-200 ease-in-out"
+                        class="bg-white hover:bg-gray-200 text-primary dark:bg-primary rounded-lg dark:hover:bg-primary-light mx-auto py-2 px-4 dark:text-white transition duration-200 ease-in-out"
                         @click="signUp"
                     >
                         Sign Up
                     </button>
                     <p>or</p>
                     <button
-                        class="hover:text-primary-light underline"
+                        class="hover:text-gray-200 dark:hover:text-primary-light underline transition duration-200 ease-in-out"
                         @click="toggleButtons"
                     >
                         Log In
