@@ -4,11 +4,62 @@
     >
         <div class="flex flex-row w-full justify-between py-5">
             <div>{{ fName }} {{ lName }}</div>
-            <div>{{ email }}</div>
-            <!-- <button class="bg-white/15 text-white rounded-full px-3 py-1">
-                Edit Profile <i class="i-mdi:settings w-6 h-6"></i>
-            </button> -->
+            <!-- <div>{{ email }}</div> -->
         </div>
+        <div class="flex flex-col border border-1 rounded-lg">
+            <div>
+                <Bio />
+            </div>
+            <div class="text-right">
+                <button
+                    class="bg-white dark:bg-primary shadow-lg rounded-lg p-2 text-left justify-between text-sm"
+                    @click="open = true"
+                >
+                    <i class="i-mdi:gear w-4 h-4 align-middle"></i>
+                    Edit Bio
+                </button>
+                <Teleport to="body">
+                    <div v-if="open" class="modal flex">
+                        <div class="bg-black w-min m-auto rounded-md">
+                            <div
+                                class="bg-white/30 w-min m-auto p-4 rounded-md"
+                            >
+                                <p class="text-center text-white">Bio</p>
+                                <div class="flex flex-col justify-center p-5">
+                                    <div class="justify-center flex">
+                                        <textarea
+                                            id="bio"
+                                            v-model="content"
+                                            rows="5"
+                                            cols="33"
+                                            placeholder="Bio"
+                                            class="text-sm m-2 px-2 py-1 rounded-md"
+                                        />
+                                    </div>
+                                </div>
+                                <div
+                                    class="mx-auto w-full grid grid-cols-2 justify-center"
+                                >
+                                    <button
+                                        class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
+                                        @click="updateBio(), (open = false)"
+                                    >
+                                        Update
+                                    </button>
+                                    <button
+                                        class="bg-white dark:bg-primary shadow-lg rounded-full mx-5 py-1 text-center justify-between text-primary dark:text-white"
+                                        @click="open = false"
+                                    >
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Teleport>
+            </div>
+        </div>
+        <body></body>
         <!-- <div class="text-right py-5">{user Info}</div> -->
         <div class="w-full mx-auto text-center border-b-2 border-white/15">
             Posts
@@ -19,19 +70,51 @@
     </div>
 </template>
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+import Bio from '../components/Bio.vue'
 import Post from '../components/Post.vue'
 import { Post as PostType } from '../models'
 import { onMounted, ref } from 'vue'
-import { collection, query, getDocs, where } from 'firebase/firestore'
+import {
+    collection,
+    query,
+    getDocs,
+    where,
+    addDoc,
+    setDoc,
+    doc
+} from 'firebase/firestore'
 import { db } from '../firebase/init.ts'
 import dayjs from 'dayjs'
 
+const router = useRouter()
+const content = ref('')
 const posts = ref<PostType[]>([])
 
 // const email = sessionStorage.getItem('ss_email')
+const open = ref(false)
 const fName = ref('')
 const lName = ref('')
-const email = ref('jswena@swau.edu')
+const email = ref('')
+
+const updateBio = async () => {
+    const q = query(
+        collection(db, 'users'),
+        where('email', '==', sessionStorage.getItem('ss_email'))
+    )
+    const querySnapshot = await getDocs(q)
+    const userDoc = querySnapshot.docs.pop()
+    if (userDoc?.exists()) {
+        setDoc(
+            doc(db, 'users', userDoc.id),
+            { bio: content.value },
+            { merge: true }
+        )
+        router.go(0)
+    } else {
+        // console.log('//user yelled at for needing to sign up')
+    }
+}
 
 const getUser = async () => {
     const q = query(
@@ -50,6 +133,7 @@ const getUser = async () => {
     fName.value = doc?.get('firstName')
     lName.value = doc?.get('lastName')
     email.value = doc?.get('email')
+    // docID.value = doc?.get()
 }
 
 const getPosts = async () => {
@@ -82,3 +166,15 @@ onMounted(() => {
     getPosts()
 })
 </script>
+
+<style scoped>
+.modal {
+    position: fixed;
+    z-index: 999;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(50, 50, 50, 0.7);
+}
+</style>
