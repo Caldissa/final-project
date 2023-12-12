@@ -1,4 +1,3 @@
-<!-- make sure mobile is good -->
 <template>
     <div
         class="w-full h-full p-4 md:p-6 flex flex-col gap-4 md:gap-6 md:border-r-2 bg-primary dark:bg-white/15 border-black/50 dark:border-white/50 text-primary dark:text-white"
@@ -26,6 +25,9 @@
         <button class="buttons" @click="logout()">
             <i class="i-mdi:logout w-6 h-6"></i>
             <p>Logout</p>
+        </button>
+        <button class="text-black" @click="modeToggle">
+            <i class="i-line-md:light-dark-loop w-6 h-6"></i>
         </button>
         <Teleport to="body">
             <div v-if="open" class="modal flex">
@@ -91,6 +93,10 @@ const router = useRouter()
 const open = ref(false)
 const content = ref('')
 const media = ref('')
+
+const modeToggle = () => {
+    document.getElementsByTagName('html')[0].classList.toggle('dark')
+}
 
 const create = async () => {
     const q = query(
