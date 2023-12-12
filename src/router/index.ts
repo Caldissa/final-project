@@ -32,11 +32,7 @@ router.beforeEach((to, _from, next) => {
     if (!email || !timestamp) {
         return next('/login')
     }
-    console.log('checking timestamp: ', timestamp)
-    console.log('diff: ', dayjs().diff(dayjs(timestamp), 'hour'))
-    console.log('hi', dayjs().diff(dayjs(timestamp), 'hour') > 1)
     if (dayjs().diff(dayjs(timestamp), 'hour') < -23) {
-        console.log('expired')
         sessionStorage.removeItem('ss_email')
         sessionStorage.removeItem('ss_date')
         return next('/login')

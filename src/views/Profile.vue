@@ -27,9 +27,11 @@ import { db } from '../firebase/init.ts'
 
 const posts = ref<PostType[]>([])
 
-const email = sessionStorage.getItem('ss_email')
+// const email = sessionStorage.getItem('ss_email')
 const fName = ref('')
 const lName = ref('')
+const email = ref('')
+
 const getUser = async () => {
     const q = query(
         collection(db, 'users'),
@@ -41,6 +43,7 @@ const getUser = async () => {
     const doc = querySnapshot.docs.pop()
     fName.value = doc?.get('firstName')
     lName.value = doc?.get('lastName')
+    email.value = doc?.get('email')
 }
 
 const getPosts = async () => {
@@ -53,11 +56,8 @@ const getPosts = async () => {
     const querySnapshot = await getDocs(q)
 
     querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data())
         posts.value.push(doc.data() as PostType)
     })
-
-    console.log('posts', posts.value)
 }
 
 onMounted(() => {

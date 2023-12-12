@@ -41,8 +41,6 @@ const open = ref(false)
 const toggleMenu = () => {
     const ham = document.getElementById('hamburger')
     if (ham) {
-        console.log('found')
-
         if (open.value) {
             SlideUp(ham, 'flex')
             open.value = false
@@ -51,7 +49,7 @@ const toggleMenu = () => {
             open.value = true
         }
     } else {
-        console.log('lost')
+        console.error('could not find menu')
     }
 }
 </script>

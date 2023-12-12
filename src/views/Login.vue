@@ -71,12 +71,12 @@ const login = async () => {
             sessionStorage.setItem('ss_date', dayjs().format())
             router.push('/')
         } else {
-            console.log(
-                '//user needs to be yelled at to enter the correct password'
-            )
+            // console.log(
+            //     '//user needs to be yelled at to enter the correct password'
+            // )
         }
     } else {
-        console.log('//user yelled at for needing to sign up')
+        // console.log('//user yelled at for needing to sign up')
     }
 }
 
@@ -92,7 +92,7 @@ const signUp = async () => {
             const querySnapshot = await getDocs(q)
             const doc = querySnapshot.docs.pop()
             if (doc?.exists()) {
-                console.log('//yell at user that acc exists')
+                // console.log('//yell at user that acc exists')
             } else {
                 const user = ref<User>({
                     email: email.value,
@@ -107,14 +107,14 @@ const signUp = async () => {
 
                 const docRef = await addDoc(colRef, user.value)
 
-                console.log('Document was created with ID:', docRef.id)
+                // console.log('Document was created with ID:', docRef.id)
 
                 sessionStorage.setItem('ss_email', email.value)
                 sessionStorage.setItem('ss_date', dayjs().format())
                 router.push('/')
             }
         } else {
-            console.log('//user needs to be yelled at to match passwords')
+            // console.log('//user needs to be yelled at to match passwords')
         }
     }
 }
