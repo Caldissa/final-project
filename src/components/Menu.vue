@@ -34,9 +34,22 @@
             Post
         </button>
         <Teleport to="body">
-            <div v-if="open" class="modal">
-                <p>Hello from the modal!</p>
-                <button @click="open = false">Close</button>
+            <div v-if="open" class="modal w-full justify justify-center">
+                <p class="text-center text-white">Hello from the modal!</p>
+                <div class="w-full justify-center">
+                    <button
+                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between text-primary dark:text-white"
+                        @click="open = false"
+                    >
+                        Close
+                    </button>
+                    <button
+                        class="bg-white dark:bg-primary shadow-lg rounded-full px-3 py-1 text-left justify-between text-primary dark:text-white"
+                        @click="open = false"
+                    >
+                        Post
+                    </button>
+                </div>
             </div>
         </Teleport>
         <button
