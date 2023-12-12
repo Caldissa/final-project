@@ -14,7 +14,9 @@
                     <div
                         class="w-full mx-auto max-w-prose h-full md:px-6 md:py-2 xl:py-4 flex flex-col gap-4 md:gap-6"
                     >
-                        <Title />
+                        <div class="hidden md:flex">
+                            <Title />
+                        </div>
                         <div class="p-4">
                             <RouterView />
                         </div>
