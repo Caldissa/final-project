@@ -41,6 +41,7 @@
                         <div class="flex flex-col justify-center p-5">
                             <div class="justify-center flex">
                                 <textarea
+                                    id="saying"
                                     rows="5"
                                     cols="33"
                                     placeholder="What's on your mind..."
