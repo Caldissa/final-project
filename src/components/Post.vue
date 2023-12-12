@@ -1,3 +1,4 @@
+<!--- could redesign post with text area outline -->
 <template>
     <div
         class="w-full flex flex-col border dark:text-white dark:border-white/30 dark:bg-white/10 rounded-lg p-4"
