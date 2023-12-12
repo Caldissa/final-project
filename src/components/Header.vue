@@ -1,6 +1,6 @@
 <template>
     <header
-        class="md:hidden absolute z-20 text-white shadow-lg top-0 w-full h-20 bg-primary p-4 md:px-8 flex justify-between items-center"
+        class="md:hidden absolute z-60 text-white shadow-lg top-0 w-full h-20 bg-primary p-4 md:px-8 flex justify-between items-center"
     >
         <div class="flex w-full items-end gap-1">
             <h1 class="text-4xl title dark:text-white tracking-tight">
@@ -27,7 +27,7 @@
     <div
         v-if="open"
         id="bg-shade"
-        class="absolute top-0 w-full right-0 h-100vh bg-black/70 w-full h-full"
+        class="absolute top-0 z-50 w-full right-0 h-100vh bg-black/70 w-full h-full"
     ></div>
 </template>
 <script setup lang="ts">
