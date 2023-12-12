@@ -31,13 +31,18 @@ const posts = ref<PostType[]>([])
 // const email = sessionStorage.getItem('ss_email')
 const fName = ref('')
 const lName = ref('')
-const email = ref('')
+const email = ref('jswena@swau.edu')
 
 const getUser = async () => {
     const q = query(
         collection(db, 'users'),
         where('email', '==', sessionStorage.getItem('ss_email'))
     )
+
+    // const q = query(
+    //     collection(db, 'users'),
+    //     where('email', '==', sessionStorage.getItem('ss_email'))
+    // )
 
     const querySnapshot = await getDocs(q)
 
