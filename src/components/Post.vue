@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { Post } from '../models'
 import dayjs from 'dayjs'
 
