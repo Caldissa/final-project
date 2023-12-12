@@ -1,4 +1,4 @@
-<!-- need to add signup stuff and format -->
+<!-- need to add signup stuff and format; make sure mobile is good -->
 <template>
     <div class="grid gap-4">
         <div

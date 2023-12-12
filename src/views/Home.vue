@@ -1,3 +1,4 @@
+<!-- remove get post; clean up formatting on posts; make sure mobile is good -->
 <template>
     <div
         class="grid md:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_4fr_1fr] w-full h-full"
